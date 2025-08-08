@@ -15,7 +15,7 @@ export default function PreferencesForm() {
   };
 
   return (
-    <div className="space-y-6 p-6 bg-white  rounded-md">
+    <div className="space-y-6 p-6 text-sm text-gray-800">
       <h2 className="text-2xl font-semibold text-gray-800">
         Route Preferences
       </h2>
@@ -28,13 +28,21 @@ export default function PreferencesForm() {
         />
       </FormGroup>
 
-      <FormGroup label="Desired Distance (km)">
+      <FormGroup label="Distance">
+        <div className="flex items-center justify-between">
+          <span className="text-sm text-gray-600">1 km</span>
+          <span className="text-sm font-medium text-gray-800">
+            {preferences.distance} km
+          </span>
+          <span className="text-sm text-gray-600">200 km</span>
+        </div>
         <input
-          type="number"
-          name="distance"
+          type="range"
+          min="1"
+          max="200"
           value={preferences.distance}
-          onChange={(e) => updatePref("distance", e.target.value)}
-          className="w-full border rounded-md p-2 text-sm focus:ring-2 focus:ring-sky-400"
+          onChange={(e) => updatePref("distance", Number(e.target.value))}
+          className="w-full accent-sky-500 mt-1"
         />
       </FormGroup>
 
